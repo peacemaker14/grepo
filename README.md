@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GRepo - GitHub Repository Viewer
+
+A Next.js application that allows users to search and view GitHub repositories and their README files in a clean, formatted way.
+
+## Features
+
+- Search GitHub users by username
+- View list of repositories for a specific user
+- Display repository README content in formatted view
+- Built with Next.js for optimal performance and SEO
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (version 18.18 or higher)
+- [Bun](https://bun.sh/) (optional, for faster development)
 
 ## Getting Started
 
-First, run the development server:
-
+1. Clone the repository
+2. Install dependencies:
 ```bash
-npm run dev
+bun install
 # or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Run the development server:
+```bash
+# Using Bun
+bun --bun run dev
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Using Node.js
+bun run dev
+# or
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Project Structure
+
+The application follows a simple user flow:
+1. Search for a GitHub username
+2. Display the user's repository list
+3. View selected repository's README in a formatted view
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) - React framework for production
+- [Bun](https://bun.sh/) - Fast JavaScript runtime and package manager
+- GitHub API - For fetching repository data
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about the technologies used in this project:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Bun Documentation](https://bun.sh/docs)
+- [GitHub REST API](https://docs.github.com/en/rest)
