@@ -5,18 +5,10 @@ import { useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
-import {
-  ArrowLeft,
-  ChevronLeft,
-  ChevronRight,
-  Code,
-  GitFork,
-  Loader,
-  Star,
-} from "lucide-react";
+import { ArrowLeft, Loader } from "lucide-react";
 
-import Card from "@src/components/Card";
-import MetadataItem from "@src/components/MetadataItem";
+import Pagination from "@src/components/Pagination";
+import ProjectCard from "@src/components/ProjectCard";
 import { useGithubUserProjects } from "@src/hooks/useGithubUserProjects";
 
 import styles from "./ProjectsPage.module.css";
@@ -62,59 +54,15 @@ const ProjectsPage = () => {
 
       <div className={styles.grid}>
         {projects?.map((project) => (
-          <Card
-            key={project.id}
-            title={project.name}
-            description={project.description || "No description available"}
-            link={{
-              href: project.htmlUrl,
-              label: "View on GitHub →",
-            }}
-          >
-            <MetadataItem
-              icon={<Star size={16} />}
-              value={project.stargazersCount}
-              label="stars"
-            />
-            <MetadataItem
-              icon={<GitFork size={16} />}
-              value={project.forksCount}
-              label="forks"
-            />
-            {project.language && (
-              <MetadataItem
-                icon={<Code size={16} />}
-                value={project.language}
-                label="language"
-              />
-            )}
-          </Card>
+          <ProjectCard key={project.id} {...project} />
         ))}
       </div>
 
-      {totalPages > 1 && (
-        <div className={styles.pagination}>
-          <button
-            onClick={() => setCurrentPage((p) => p - 1)}
-            disabled={currentPage === 1}
-            className={styles.pageButton}
-            aria-label="Previous page"
-          >
-            <ChevronLeft size={20} />
-          </button>
-          <span className={styles.pageInfo}>
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            onClick={() => setCurrentPage((p) => p + 1)}
-            disabled={currentPage === totalPages}
-            className={styles.pageButton}
-            aria-label="Next page"
-          >
-            <ChevronRight size={20} />
-          </button>
-        </div>
-      )}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={setCurrentPage}
+      />
     </div>
   );
 };
