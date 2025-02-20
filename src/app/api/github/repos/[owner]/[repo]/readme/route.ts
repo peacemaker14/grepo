@@ -1,22 +1,20 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 interface GithubReadmeResponse {
   content: string;
   encoding: string;
 }
 
-type RouteParams = {
-  params: {
-    owner: string;
-    repo: string;
-  };
-};
-
 export async function GET(
-  req: NextRequest,
-  { params }: RouteParams
+  request: Request,
+  context: {
+    params: {
+      owner: string;
+      repo: string;
+    };
+  }
 ): Promise<NextResponse> {
-  const { owner, repo } = await params;
+  const { owner, repo } = await context.params;
 
   try {
     const response = await fetch(
