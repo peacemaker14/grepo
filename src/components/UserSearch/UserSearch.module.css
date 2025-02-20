@@ -1,0 +1,64 @@
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.input {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  font-size: var(--font-size-base);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.options {
+  position: absolute;
+  margin-top: var(--spacing-xs);
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.option {
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+}
+
+.option[data-active="true"] {
+  background: var(--color-accent);
+}
+
+.option[data-selected="true"] {
+  font-weight: var(--font-weight-bold);
+}
+
+.userItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.loading,
+.noResults {
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--color-secondary);
+}
