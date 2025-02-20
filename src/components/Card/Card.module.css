@@ -23,6 +23,11 @@
   color: var(--color-secondary);
   margin-bottom: var(--spacing-md);
   line-height: var(--line-height-normal);
+  height: 6em;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .metadata {
