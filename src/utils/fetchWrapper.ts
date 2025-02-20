@@ -11,15 +11,10 @@ class FetchError extends Error {
   }
 }
 
-interface FetchResponse<T> {
-  data: T;
-  headers?: Headers;
-}
-
 export const fetchJson = async <T>(
   input: RequestInfo | URL,
   init?: RequestInit
-): Promise<FetchResponse<T>> => {
+): Promise<T> => {
   try {
     const response = await fetch(input, init);
 
@@ -32,10 +27,8 @@ export const fetchJson = async <T>(
     }
 
     const data = await response.json();
-    return {
-      data: convertKeysToCamelCase(data) as T,
-      headers: response.headers,
-    };
+
+    return convertKeysToCamelCase(data) as T;
   } catch (error) {
     if (error instanceof FetchError) {
       throw error;

@@ -13,8 +13,8 @@ interface SearchUsersRawResponse {
 }
 
 const searchGithubUsers = async (query: string): Promise<GithubUser[]> => {
-  const { data } = await fetchJson<SearchUsersRawResponse>(
-    `https://api.github.com/search/users?q=${encodeURIComponent(query)}`
+  const data = await fetchJson<SearchUsersRawResponse>(
+    `/api/github/search/users?q=${encodeURIComponent(query)}`
   );
 
   return data.items;

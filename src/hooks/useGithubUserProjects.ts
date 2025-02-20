@@ -18,27 +18,17 @@ interface GithubResponse {
   totalPages: number;
 }
 
-interface GithubRepoRaw {
-  id: number;
-  name: string;
-  html_url: string;
-  description: string;
-  stargazers_count: number;
-  forks_count: number;
-  language: string;
-  updated_at: string;
-}
-
 const fetchUserProjects = async (
   username: string,
   page: number,
   perPage: number
 ): Promise<GithubResponse> => {
-  const { data, headers } = await fetchJson<GithubRepoRaw[]>(
-    `https://api.github.com/users/${username}/repos?sort=updated&per_page=${perPage}&page=${page}`
-  );
+  const { data, headers } = await fetchJson<{
+    data: GithubRepo[];
+    headers: Record<string, string>;
+  }>(`/api/github/users/${username}/repos?page=${page}&per_page=${perPage}`);
 
-  const linkHeader = headers?.get("link");
+  const linkHeader = headers?.link;
   const totalPages = linkHeader
     ? parseInt(linkHeader.match(/page=(\d+)>; rel="last"/)?.[1] || "1")
     : 1;
