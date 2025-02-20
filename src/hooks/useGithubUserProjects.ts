@@ -6,6 +6,9 @@ import { parseLinkHeader } from "@src/utils/githubPagination";
 export interface GithubRepo {
   id: number;
   name: string;
+  owner: {
+    login: string;
+  };
   description: string;
   htmlUrl: string;
   stargazersCount: number;
