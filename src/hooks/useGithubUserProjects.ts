@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 import { fetchJson } from "@src/utils/fetchWrapper";
+import { parseLinkHeader } from "@src/utils/githubPagination";
 
 export interface GithubRepo {
   id: number;
@@ -15,7 +16,10 @@ export interface GithubRepo {
 
 interface GithubResponse {
   data: GithubRepo[];
-  totalPages: number;
+  pagination: {
+    next?: number;
+    prev?: number;
+  };
 }
 
 const fetchUserProjects = async (
@@ -28,12 +32,15 @@ const fetchUserProjects = async (
     headers: Record<string, string>;
   }>(`/api/github/users/${username}/repos?page=${page}&per_page=${perPage}`);
 
-  const linkHeader = headers?.link;
-  const totalPages = linkHeader
-    ? parseInt(linkHeader.match(/page=(\d+)>; rel="last"/)?.[1] || "1")
-    : 1;
+  const links = parseLinkHeader(headers?.link);
 
-  return { data, totalPages };
+  return {
+    data,
+    pagination: {
+      next: links.next,
+      prev: links.prev,
+    },
+  };
 };
 
 export const useGithubUserProjects = (

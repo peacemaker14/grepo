@@ -4,33 +4,27 @@ import styles from "./Pagination.module.css";
 
 interface PaginationProps {
   currentPage: number;
-  totalPages: number;
+  nextPage?: number;
+  prevPage?: number;
   onPageChange: (page: number) => void;
 }
 
-const Pagination = ({
-  currentPage,
-  totalPages,
-  onPageChange,
-}: PaginationProps) => {
-  if (totalPages <= 1) return null;
+const Pagination = ({ nextPage, prevPage, onPageChange }: PaginationProps) => {
+  if (!nextPage && !prevPage) return null;
 
   return (
     <div className={styles.pagination}>
       <button
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage === 1}
+        onClick={() => prevPage && onPageChange(prevPage)}
+        disabled={!prevPage}
         className={styles.pageButton}
         aria-label="Previous page"
       >
         <ChevronLeft size={20} />
       </button>
-      <span className={styles.pageInfo}>
-        Page {currentPage} of {totalPages}
-      </span>
       <button
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
+        onClick={() => nextPage && onPageChange(nextPage)}
+        disabled={!nextPage}
         className={styles.pageButton}
         aria-label="Next page"
       >

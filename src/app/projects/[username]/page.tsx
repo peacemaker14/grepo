@@ -32,9 +32,9 @@ const ProjectsPage = () => {
     );
   if (error) return <div className={styles.error}>Error loading projects</div>;
 
-  const { data: projects, totalPages } = projectsData || {
+  const { data: projects, pagination } = projectsData || {
     data: [],
-    totalPages: 0,
+    pagination: {},
   };
 
   return (
@@ -60,7 +60,8 @@ const ProjectsPage = () => {
 
       <Pagination
         currentPage={currentPage}
-        totalPages={totalPages}
+        nextPage={pagination.next}
+        prevPage={pagination.prev}
         onPageChange={setCurrentPage}
       />
     </div>
