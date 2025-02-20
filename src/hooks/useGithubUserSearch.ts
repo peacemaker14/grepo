@@ -8,14 +8,15 @@ export interface GithubUser {
   avatarUrl: string;
 }
 
-interface SearchUsersResponse {
+interface SearchUsersRawResponse {
   items: GithubUser[];
 }
 
 const searchGithubUsers = async (query: string): Promise<GithubUser[]> => {
-  const data = await fetchJson<SearchUsersResponse>(
+  const { data } = await fetchJson<SearchUsersRawResponse>(
     `https://api.github.com/search/users?q=${encodeURIComponent(query)}`
   );
+
   return data.items;
 };
 

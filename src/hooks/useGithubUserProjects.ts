@@ -13,17 +13,47 @@ export interface GithubRepo {
   updatedAt: string;
 }
 
-const fetchUserProjects = async (username: string): Promise<GithubRepo[]> => {
-  const data = await fetchJson<GithubRepo[]>(
-    `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`
+interface GithubResponse {
+  data: GithubRepo[];
+  totalPages: number;
+}
+
+interface GithubRepoRaw {
+  id: number;
+  name: string;
+  html_url: string;
+  description: string;
+  stargazers_count: number;
+  forks_count: number;
+  language: string;
+  updated_at: string;
+}
+
+const fetchUserProjects = async (
+  username: string,
+  page: number,
+  perPage: number
+): Promise<GithubResponse> => {
+  const { data, headers } = await fetchJson<GithubRepoRaw[]>(
+    `https://api.github.com/users/${username}/repos?sort=updated&per_page=${perPage}&page=${page}`
   );
-  return data;
+
+  const linkHeader = headers?.get("link");
+  const totalPages = linkHeader
+    ? parseInt(linkHeader.match(/page=(\d+)>; rel="last"/)?.[1] || "1")
+    : 1;
+
+  return { data, totalPages };
 };
 
-export const useGithubUserProjects = (username: string) => {
+export const useGithubUserProjects = (
+  username: string,
+  page: number,
+  perPage: number
+) => {
   return useQuery({
-    queryKey: ["githubProjects", username],
-    queryFn: () => fetchUserProjects(username),
+    queryKey: ["githubProjects", username, page, perPage],
+    queryFn: () => fetchUserProjects(username, page, perPage),
     enabled: !!username,
     staleTime: 1000 * 60 * 5,
   });
