@@ -16,10 +16,14 @@ const fetchRepoReadme = async (
   return data.content;
 };
 
-export const useGithubRepoReadme = (owner: string, repo: string) => {
+export const useGithubRepoReadme = (
+  owner: string,
+  repo: string,
+  enabled: boolean = false
+) => {
   return useQuery({
     queryKey: ["repoReadme", owner, repo],
     queryFn: () => fetchRepoReadme(owner, repo),
-    enabled: Boolean(owner && repo),
+    enabled: Boolean(owner && repo && enabled),
   });
 };

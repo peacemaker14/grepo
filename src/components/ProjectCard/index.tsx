@@ -36,7 +36,7 @@ const ProjectCard = ({
     data: readme,
     isLoading,
     error,
-  } = useGithubRepoReadme(owner.login, name);
+  } = useGithubRepoReadme(owner.login, name, isReadmeOpen);
 
   return (
     <>
