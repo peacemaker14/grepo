@@ -1,4 +1,8 @@
 import Image from "next/image";
+
+import Card from "@src/components/Card";
+import SearchBar from "@src/components/SearchBar";
+
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -23,28 +27,24 @@ export default function Home() {
             Search for a username, explore their projects, and read detailed
             README, all in one place.
           </p>
-          <div className={styles.searchBar}>
-            <input type="text" placeholder="Enter a GitHub username..." />
-            <button type="submit">Search</button>
-          </div>
+          <SearchBar />
         </section>
 
         <section className={styles.featured}>
           <h2>Featured Projects</h2>
           <div className={styles.projectGrid}>
-            {/* TODO: Use data from github API */}
-            <div className={styles.projectCard}>
-              <h3>Project Name</h3>
-              <p>Project description goes here</p>
-            </div>
-            <div className={styles.projectCard}>
-              <h3>Project Name</h3>
-              <p>Project description goes here</p>
-            </div>
-            <div className={styles.projectCard}>
-              <h3>Project Name</h3>
-              <p>Project description goes here</p>
-            </div>
+            <Card
+              title="Project Name"
+              description="Project description goes here"
+            />
+            <Card
+              title="Project Name"
+              description="Project description goes here"
+            />
+            <Card
+              title="Project Name"
+              description="Project description goes here"
+            />
           </div>
         </section>
       </main>

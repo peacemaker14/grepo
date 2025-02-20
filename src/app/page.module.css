@@ -45,38 +45,6 @@
   margin: 0 auto 2rem;
 }
 
-.searchBar {
-  max-width: 600px;
-  margin: 0 auto;
-  display: flex;
-  gap: 0.5rem;
-}
-
-.searchBar input {
-  flex: 1;
-  padding: 0.75rem 1rem;
-  border: 2px solid var(--color-border);
-  border-radius: 8px;
-  font-size: var(--font-size-base);
-  background: var(--color-surface);
-  color: var(--color-text);
-}
-
-.searchBar button {
-  padding: 0.75rem 1.5rem;
-  background: var(--color-primary);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: var(--font-weight-bold);
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.searchBar button:hover {
-  opacity: 0.9;
-}
-
 .featured {
   padding: 4rem 0;
 }
@@ -92,31 +60,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
-}
-
-.projectCard {
-  background: var(--color-surface);
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--color-border);
-  transition: transform 0.2s, border-color 0.2s;
-}
-
-.projectCard:hover {
-  transform: translateY(-2px);
-  border-color: var(--color-primary);
-}
-
-.projectCard h3 {
-  color: var(--color-text);
-  margin-bottom: 0.5rem;
-  font-weight: var(--font-weight-bold);
-}
-
-.projectCard p {
-  color: var(--color-secondary);
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-normal);
 }
 
 @media (prefers-color-scheme: dark) {
