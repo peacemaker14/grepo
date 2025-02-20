@@ -1,6 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+type JsonValue =
+  | string
+  | number
+  | boolean
+  | null
+  | JsonValue[]
+  | { [key: string]: JsonValue };
 
-type ObjectWithNestedKeys = { [key: string]: any };
+type ObjectWithNestedKeys = { [key: string]: JsonValue };
 
 export const toCamelCase = (str: string): string => {
   return str.replace(/_([a-z])/g, (g) => g[1].toUpperCase());
@@ -18,7 +24,9 @@ export const convertKeysToCamelCase = <T extends ObjectWithNestedKeys>(
   if (obj !== null && typeof obj === "object") {
     return Object.keys(obj).reduce((result, key) => {
       const camelKey = toCamelCase(key);
-      result[camelKey] = convertKeysToCamelCase(obj[key]);
+      result[camelKey] = convertKeysToCamelCase(
+        obj[key] as ObjectWithNestedKeys
+      );
       return result;
     }, {} as ObjectWithNestedKeys) as T;
   }
