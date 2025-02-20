@@ -8,6 +8,7 @@ import {
   ComboboxOption,
   ComboboxOptions,
 } from "@headlessui/react";
+import { Loader } from "lucide-react";
 
 import {
   GithubUser,
@@ -44,7 +45,11 @@ const UserSearch = ({
         />
 
         <ComboboxOptions className={styles.options}>
-          {isLoading && <div className={styles.loading}>Loading...</div>}
+          {isLoading && (
+            <div className={styles.loading}>
+              <Loader className={styles.loadingIcon} />
+            </div>
+          )}
 
           {users.map((user) => (
             <ComboboxOption

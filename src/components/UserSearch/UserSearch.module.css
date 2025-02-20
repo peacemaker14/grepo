@@ -29,7 +29,7 @@
   background: var(--color-surface);
   border: 2px solid var(--color-border);
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
 }
 
 .option {
@@ -61,4 +61,18 @@
 .noResults {
   padding: var(--spacing-sm) var(--spacing-md);
   color: var(--color-secondary);
+}
+
+.loadingIcon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }

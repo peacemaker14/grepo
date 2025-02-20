@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 type ObjectWithNestedKeys = { [key: string]: any };
 
 export const toCamelCase = (str: string): string => {

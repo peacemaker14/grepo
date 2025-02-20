@@ -1,0 +1,20 @@
+.metadataItem {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}
+
+.value {
+  font-weight: 500;
+}
+
+.label {
+  color: #666;
+}
