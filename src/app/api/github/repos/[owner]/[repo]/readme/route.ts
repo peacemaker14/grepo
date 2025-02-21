@@ -8,10 +8,10 @@ interface GithubReadmeResponse {
 export async function GET(
   request: Request,
   context: {
-    params: {
+    params: Promise<{
       owner: string;
       repo: string;
-    };
+    }>;
   }
 ): Promise<NextResponse> {
   const { owner, repo } = await context.params;
