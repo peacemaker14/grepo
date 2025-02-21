@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Image from "next/image";
+
+import { Factory } from "lucide-react";
 
 import ThemeToggle from "@src/components/ThemeToggle";
 
@@ -29,14 +30,10 @@ export default function RootLayout({
         <Providers>
           <div className={styles.page}>
             <header className={styles.header}>
-              <Image
-                className={styles.logo}
-                src="/next.svg"
-                alt="Logo"
-                width={120}
-                height={25}
-                priority
-              />
+              <div className={styles.logo}>
+                <Factory size={24} />
+                <span className={styles.logoText}>GRepo</span>
+              </div>
               <ThemeToggle />
             </header>
             {children}

@@ -89,13 +89,22 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
-}
-
 .logo {
   height: 25px;
   width: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-primary);
+}
+
+.logoText {
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  color: var(--color-logo-text);
+  text-shadow:
+    1px 1px 0 var(--color-logo-shadow),
+    2px 2px 0 var(--color-logo-shadow),
+    3px 3px 0 var(--color-logo-shadow);
+  transform: translateY(-1px);
 }
