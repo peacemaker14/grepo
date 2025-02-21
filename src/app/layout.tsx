@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Image from "next/image";
 
+import ThemeToggle from "@src/components/ThemeToggle";
+
 import "./globals.css";
 import styles from "./page.module.css";
 import Providers from "./providers";
@@ -35,6 +37,7 @@ export default function RootLayout({
                 height={25}
                 priority
               />
+              <ThemeToggle />
             </header>
             {children}
           </div>
