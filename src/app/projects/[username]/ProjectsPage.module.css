@@ -7,6 +7,7 @@
 .header {
   margin-bottom: var(--spacing-xxl);
   position: relative;
+  padding-top: var(--spacing-xl);
 }
 
 .headerContent {
@@ -75,7 +76,6 @@
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: 4px;
   transition: all 0.2s ease;
-  margin-bottom: var(--spacing-lg);
   position: absolute;
   left: 0;
   top: 0;
@@ -84,4 +84,17 @@
 .backButton:hover {
   color: var(--color-text);
   background: var(--color-accent);
+}
+
+@media (width < 768px) {
+  .header {
+    padding-top: var(--spacing-xxl);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .backButton {
+    position: static;
+    margin-bottom: var(--spacing-lg);
+    display: flex;
+  }
 }
