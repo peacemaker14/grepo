@@ -1,12 +1,13 @@
 .featured {
-  padding: 4rem 2rem;
+  padding: 2rem 1rem;
 }
 
 .projectGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
   margin-top: 2rem;
+  max-width: 100%;
 }
 
 .loading {
@@ -27,5 +28,16 @@
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (width >= 768px) {
+  .featured {
+    padding: 4rem 2rem;
+  }
+
+  .projectGrid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
   }
 }
